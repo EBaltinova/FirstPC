@@ -6,7 +6,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-    static FirefoxDriver driver;
+    private FirefoxDriver driver;
 
     private ContactHelper contactHelper;
     private SessionHelper sessionHelper;
@@ -14,7 +14,6 @@ public class ApplicationManager {
     private GroupHelper groupHelper;
 
     public void init() {
-        FirefoxDriver driver;
         driver = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("/home/elmirabaltinova/firefox-sdk/bin/firefox"));
         driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         driver.get("http://localhost/addressbook/index.php");
