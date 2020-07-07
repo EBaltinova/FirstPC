@@ -3,15 +3,12 @@ package ru.stqa.pft.addressbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestBase {
+public class ApplicationManager {
     static FirefoxDriver driver;
 
     public static boolean isAlertPresent(FirefoxDriver Driver) {
@@ -23,12 +20,11 @@ public class TestBase {
       }
     }
 
-    @BeforeMethod
-    public void setUp() throws Exception {
-      driver = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("/home/elmirabaltinova/firefox-sdk/bin/firefox"));;
-      driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-      driver.get("http://localhost/addressbook/index.php");
-      login("admin", "secret");
+    public void init() {
+        driver = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("/home/elmirabaltinova/firefox-sdk/bin/firefox"));
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        driver.get("http://localhost/addressbook/index.php");
+        login("admin", "secret");
     }
 
     private void login(String username, String password) {
@@ -39,15 +35,15 @@ public class TestBase {
       driver.findElement(By.name("pass")).sendKeys(Keys.ENTER);
     }
 
-    protected void returnToGroupPage() {
+    public void returnToGroupPage() {
       driver.findElement(By.linkText("group page")).click();
     }
 
-    protected void submitGroupCreation() {
+    public void submitGroupCreation() {
       driver.findElement(By.name("submit")).click();
     }
 
-    protected void fillGroupForm(GroupData groupData) {
+    public void fillGroupForm(GroupData groupData) {
       driver.findElement(By.name("group_name")).click();
       driver.findElement(By.name("group_name")).sendKeys(groupData.getName());
       driver.findElement(By.name("group_header")).click();
@@ -56,24 +52,42 @@ public class TestBase {
       driver.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
     }
 
-    protected void initGroupCreation() {
+    public void initGroupCreation() {
       driver.findElement(By.name("new")).click();
     }
 
-    protected void gotoGroupPage() {
+    public void gotoGroupPage() {
       driver.findElement(By.linkText("groups")).click();
     }
 
-    @AfterMethod
-    public void tearDown() {
-      driver.quit();
+    public void stop() {
+        driver.quit();
     }
 
-    protected void deleteSelectedGroups() {
+    public void deleteSelectedGroups() {
       driver.findElement(By.name("delete")).click();
     }
 
-    protected void selectGroup() {
+    public void selectGroup() {
       driver.findElement(By.name("selected[]")).click();
+    }
+
+    public void submitContactCreation() {
+      driver.findElement(By.cssSelector("input:nth-child(87)")).click();
+    }
+
+    public void fillContactForm(ContactData contactData) {
+      driver.findElement(By.name("firstname")).click();
+      driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
+      driver.findElement(By.name("lastname")).click();
+      driver.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
+      driver.findElement(By.name("home")).click();
+      driver.findElement(By.name("home")).sendKeys(contactData.getNumber_home());
+      driver.findElement(By.name("email")).click();
+      driver.findElement(By.name("email")).sendKeys(contactData.getEmail());
+    }
+
+    public void initContactCreation() {
+      driver.findElement(By.linkText("add new")).click();
     }
 }
