@@ -29,9 +29,9 @@ public class ContactCreationTest {
   }
 
   @Test
-  public void contactCreation() {
+  public void testContactCreation() {
     initContactCreation();
-    fillContactForm("Bekki", "Howard", "332211", "bekki@howard.com");
+    fillContactForm(new ContactData("Bekki", "Howard", "332211", "bekki@howard.com"));
     submitContactCreation();
   }
 
@@ -39,15 +39,15 @@ public class ContactCreationTest {
     driver.findElement(By.cssSelector("input:nth-child(87)")).click();
   }
 
-  private void fillContactForm(String firstname, String lastname, String number_home, String email) {
+  private void fillContactForm(ContactData contactData) {
     driver.findElement(By.name("firstname")).click();
-    driver.findElement(By.name("firstname")).sendKeys(firstname);
+    driver.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
     driver.findElement(By.name("lastname")).click();
-    driver.findElement(By.name("lastname")).sendKeys(lastname);
+    driver.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
     driver.findElement(By.name("home")).click();
-    driver.findElement(By.name("home")).sendKeys(number_home);
+    driver.findElement(By.name("home")).sendKeys(contactData.getNumber_home());
     driver.findElement(By.name("email")).click();
-    driver.findElement(By.name("email")).sendKeys(email);
+    driver.findElement(By.name("email")).sendKeys(contactData.getEmail());
   }
 
   private void initContactCreation() {
