@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.ContactDeletionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-08T08:31:14" hostname="ws186" time="0.459">
+<testsuite name="ru.stqa.pft.addressbook.tests.GroupCreationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-09T07:05:07" hostname="ws186" time="0.725">
   <properties/>
-  <testcase name="testContactDeletion" classname="ru.stqa.pft.addressbook.tests.ContactDeletionTest" time="0.459"/>
+  <testcase name="testGroupCreation" classname="ru.stqa.pft.addressbook.tests.GroupCreationTest" time="0.725"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-Jul 08, 2020 2:31:14 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+Jul 09, 2020 1:05:06 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: OSS
 ]]></system-err>
 </testsuite>
