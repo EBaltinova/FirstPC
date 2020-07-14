@@ -36,7 +36,10 @@ public class ContactHelper extends HelperBase {
     }
 
     public void editContactForm() {
-        click(By.xpath("(//img[@alt='Edit'])[2]"));
+        click(By.xpath("(//img[@alt='Edit'])"));
+    }
+    public void chooseContact() {
+        click(By.name("selected[]"));
     }
 
     public void updateContactModification() {
@@ -45,6 +48,6 @@ public class ContactHelper extends HelperBase {
 
     public void deleteContact() {
         click(By.xpath("//input[@value='Delete']"));
-
+        driver.switchTo().alert().accept();
     }
 }
