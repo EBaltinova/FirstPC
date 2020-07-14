@@ -31,6 +31,7 @@ public class ContactHelper extends HelperBase {
         }
     }
 
+
     public void initContactCreation() {
       click(By.linkText("add new"));
     }
@@ -55,7 +56,11 @@ public class ContactHelper extends HelperBase {
         initContactCreation();
         fillContactForm(contact, creation);
         submitContactCreation();
+        returnToContactPage();
+    }
 
+    private void returnToContactPage() {
+        click(By.linkText("home page"));
     }
 
     public boolean isThereAContact() {
