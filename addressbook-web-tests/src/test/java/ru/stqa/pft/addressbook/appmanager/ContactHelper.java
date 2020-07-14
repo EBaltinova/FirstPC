@@ -50,4 +50,15 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//input[@value='Delete']"));
         driver.switchTo().alert().accept();
     }
+
+    public void createContact(ContactData contact, boolean creation) {
+        initContactCreation();
+        fillContactForm(contact, creation);
+        submitContactCreation();
+
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }
