@@ -11,9 +11,9 @@ public class GroupHelper extends HelperBase {
         super(driver);
     }
 
-    public void returnToGroupPage() {
-        click(By.linkText("groups"));
-    }
+    //public void returnToGroupPage() {
+     //   click(By.linkText("groups"));
+   // }
 
     public void submitGroupCreation() {
       click(By.name("submit"));
